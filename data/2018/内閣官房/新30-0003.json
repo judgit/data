@@ -94,5 +94,14 @@
       ]
     }
   ],
-  "url": "https://www.cao.go.jp/yosan/excel/h30/s30000300_naikakukanbou.xls"
+  "url": "https://www.cao.go.jp/yosan/excel/h30/s30000300_naikakukanbou.xls",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "内閣官房",
+      "事業番号1": "新30",
+      "事業番号2": "0004",
+      "事業番号3": null,
+      "年度": 2017
+    }
+  ]
 }

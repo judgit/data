@@ -537,5 +537,21 @@
       ]
     }
   ],
-  "url": "https://www.env.go.jp/guide/budget/spv_eff/review_h30/sheets_h29f/xls/314.xlsx"
+  "url": "https://www.env.go.jp/guide/budget/spv_eff/review_h30/sheets_h29f/xls/314.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "環境省",
+      "事業番号1": null,
+      "事業番号2": "0294",
+      "事業番号3": null,
+      "年度": 2010
+    },
+    {
+      "府省庁": "環境省",
+      "事業番号1": null,
+      "事業番号2": "0314",
+      "事業番号3": null,
+      "年度": 2011
+    }
+  ]
 }

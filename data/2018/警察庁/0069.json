@@ -253,5 +253,14 @@
       ]
     }
   ],
-  "url": "https://www.npa.go.jp/policies/budget/review/h30/reviewsheet/29006900.pdf"
+  "url": "https://www.npa.go.jp/policies/budget/review/h30/reviewsheet/29006900.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "警察庁",
+      "事業番号1": null,
+      "事業番号2": "0068",
+      "事業番号3": null,
+      "年度": 2010
+    }
+  ]
 }

@@ -235,5 +235,21 @@
       ]
     }
   ],
-  "url": "http://www.maff.go.jp/j/budget/review/h30/saisyu/xls/sinki/300019_nousui_s.xlsx"
+  "url": "http://www.maff.go.jp/j/budget/review/h30/saisyu/xls/sinki/300019_nousui_s.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "農林水産省",
+      "事業番号1": null,
+      "事業番号2": "0230",
+      "事業番号3": null,
+      "年度": 2011
+    },
+    {
+      "府省庁": "農林水産省",
+      "事業番号1": "新30",
+      "事業番号2": "0019",
+      "事業番号3": null,
+      "年度": 2012
+    }
+  ]
 }

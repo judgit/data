@@ -130,5 +130,14 @@
       ]
     }
   ],
-  "url": "https://www.npa.go.jp/policies/budget/review/h30/reviewsheet/30000600.pdf"
+  "url": "https://www.npa.go.jp/policies/budget/review/h30/reviewsheet/30000600.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "警察庁",
+      "事業番号1": "新30",
+      "事業番号2": "0006",
+      "事業番号3": null,
+      "年度": 2017
+    }
+  ]
 }

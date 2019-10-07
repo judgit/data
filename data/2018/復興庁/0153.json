@@ -373,5 +373,28 @@
       ]
     }
   ],
-  "url": "https://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_h30/rs30pdf/29015300_fukkochou.pdf"
+  "url": "https://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_h30/rs30pdf/29015300_fukkochou.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "復興庁",
+      "事業番号1": null,
+      "事業番号2": "0165",
+      "事業番号3": null,
+      "年度": 2012
+    },
+    {
+      "府省庁": "原子力規制委員会",
+      "事業番号1": null,
+      "事業番号2": "0046",
+      "事業番号3": null,
+      "年度": 2013
+    },
+    {
+      "府省庁": "復興庁",
+      "事業番号1": null,
+      "事業番号2": "0174",
+      "事業番号3": null,
+      "年度": 2014
+    }
+  ]
 }
