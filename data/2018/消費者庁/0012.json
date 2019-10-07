@@ -242,5 +242,14 @@
       ]
     }
   ],
-  "url": "https://www.caa.go.jp/policies/budget/review/2018/review_sheet_003/pdf/review_sheet_003_0012.xlsx"
+  "url": "https://www.caa.go.jp/policies/budget/review/2018/review_sheet_003/pdf/review_sheet_003_0012.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "消費者庁",
+      "事業番号1": null,
+      "事業番号2": "0013",
+      "事業番号3": null,
+      "年度": 2015
+    }
+  ]
 }

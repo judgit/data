@@ -116,5 +116,14 @@
       ]
     }
   ],
-  "url": "https://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_h30/rs30pdf/30001000_fukkochou.pdf"
+  "url": "https://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_h30/rs30pdf/30001000_fukkochou.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "復興庁",
+      "事業番号1": "新30",
+      "事業番号2": "0008",
+      "事業番号3": null,
+      "年度": 2017
+    }
+  ]
 }

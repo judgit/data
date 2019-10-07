@@ -252,5 +252,21 @@
       ]
     }
   ],
-  "url": "https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2018/h29_xls_saisyu/420.xlsx"
+  "url": "https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2018/h29_xls_saisyu/420.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "厚生労働省",
+      "事業番号1": null,
+      "事業番号2": "0416",
+      "事業番号3": null,
+      "年度": 2012
+    },
+    {
+      "府省庁": "厚生労働省",
+      "事業番号1": null,
+      "事業番号2": "0428",
+      "事業番号3": null,
+      "年度": 2013
+    }
+  ]
 }

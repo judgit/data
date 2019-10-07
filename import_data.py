@@ -4,14 +4,41 @@ import json
 import os
 
 
+digits = {
+    '元': '1',
+    '0': '0',
+    '1': '1',
+    '2': '2',
+    '3': '3',
+    '4': '4',
+    '5': '5',
+    '6': '6',
+    '7': '7',
+    '8': '8',
+    '9': '9',
+    '０': '0',
+    '１': '1',
+    '２': '2',
+    '３': '3',
+    '４': '4',
+    '５': '5',
+    '６': '6',
+    '７': '7',
+    '８': '8',
+    '９': '9',
+}
+
+
+era_offset = {
+    '昭和': 1925,
+    '平成': 1988,
+}
+
+
 def convert_era(v, era):
     if v is None:
         return None
-    offset = {
-        '昭和': 1925,
-        '平成': 1988,
-    }
-    return int(v) + offset[era]
+    return int(v) + era_offset[era]
 
 
 def to_year(s):
@@ -23,37 +50,14 @@ def to_year(s):
         '終了予定なし',
         '',
     }
-    digits = {
-        '元': '1',
-        '0': '0',
-        '1': '1',
-        '2': '2',
-        '3': '3',
-        '4': '4',
-        '5': '5',
-        '6': '6',
-        '7': '7',
-        '8': '8',
-        '9': '9',
-        '０': '0',
-        '１': '1',
-        '２': '2',
-        '３': '3',
-        '４': '4',
-        '５': '5',
-        '６': '6',
-        '７': '7',
-        '８': '8',
-        '９': '9',
-    }
     if s in ignore:
         return None
     era = int(''.join(digits[c] for c in s if c in digits))
     return convert_era(era, s[:2])
 
 
-def or_none(s, default=None):
-    if s in ['-', '―', '－', '　', '', '記入不要']:
+def or_none(s, default=None, ignore=[]):
+    if s in ['-', '‐', '―', '－', '　', '', '記入不要'] or s in ignore:
         return default
     return str(s).strip()
 
@@ -72,14 +76,62 @@ def try_float(s):
         return None
 
 
+def is_digit(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+
+def parse_project_number(t, ministry, year):
+    v = t.strip()
+    if or_none(v) is None:
+        return
+    v = v.replace('ー', '-').replace('－', '-').strip()
+    v = v.replace(',', ' ').replace('、', ' ')
+    v = ''.join([digits[c] if c in digits else c for c in v])
+    for s in v.split():
+        nums = s.split('-')
+        if len(nums) == 1:
+            p1 = None
+            p2 = nums[0]
+            p3 = None
+        elif len(nums) == 2:
+            if s.startswith('新'):
+                p1 = nums[0]
+                p2 = nums[1]
+                p3 = None
+            else:
+                p1 = None
+                p2 = nums[0]
+                p3 = nums[1]
+        else:
+            p1, p2, p3 = nums
+        if not is_digit(p2):
+            print(t)
+            print(p1, p2, p3, nums)
+            print('error: {}'.format(s))
+            continue
+        yield {
+            '年度': year,
+            '府省庁': ministry,
+            '事業番号1': p1,
+            '事業番号2': '{:04}'.format(int(p2)),
+            '事業番号3': p3,
+        }
+
+
 def load_projects_ja(base_year, inpath):
     base_era = base_year - 1988
     data = csv.reader(open(inpath))
     header = next(data)
-    indices = {h: [i for i, h2 in enumerate(header) if h == h2] for h in header}
+    indices = {h: [i for i, h2 in enumerate(
+        header) if h == h2] for h in header}
 
     for i, item in enumerate(data):
-        row = {h: item[ix[0]] if len(ix) == 1 else [item[i] for i in ix] for h, ix in indices.items()}
+        row = {h: item[ix[0]] if len(ix) == 1 else [item[i]
+                                                    for i in ix] for h, ix in indices.items()}
         obj = {}
         obj['公開年度'] = base_year
         obj['事業名'] = row['事業名'].strip()
@@ -115,7 +167,8 @@ def load_projects_ja(base_year, inpath):
             obj['事業概要'] = row['事業概要（5行程度以内。別添可）']
         elif '事業概要' in row:
             obj['事業概要'] = row['事業概要']
-        obj['実施方法'] = [s for s in row['実施方法'].replace('，', '、').split('、') if s]
+        obj['実施方法'] = [s for s in row['実施方法'].replace(
+            '，', '、').split('、') if s]
         if '主要政策・施策' in row:
             obj['主要施策'] = or_none(row['主要政策・施策'], 'その他').split('、')
         elif '主要施策' in row:
@@ -210,7 +263,8 @@ def load_projects_ja(base_year, inpath):
             for i in range(len(row['成果目標及び成果実績（アウトカム）-定量的な成果目標']))
             if or_none(row['成果目標及び成果実績（アウトカム）-定量的な成果目標'][i])
         ]
-        obj['定量的な目標が設定できない理由'] = or_none(row['定量的な成果目標の設定が困難な場合-定量的な目標設定ができない理由及び定性的な成果目標-定量的な目標が設定できない理由'])
+        obj['定量的な目標が設定できない理由'] = or_none(
+            row['定量的な成果目標の設定が困難な場合-定量的な目標設定ができない理由及び定性的な成果目標-定量的な目標が設定できない理由'])
 
         obj['アウトプット'] = [
             {
@@ -238,6 +292,25 @@ def load_projects_ja(base_year, inpath):
             if or_none(row['活動指標及び活動実績（アウトプット）-活動指標'][i])
         ]
 
+        past_project_numbers = []
+        if '関連する過去のレビューシートの事業番号-平成{}年度-所管府省名'.format(base_era - 1) in row:
+            items = zip(
+                row['関連する過去のレビューシートの事業番号-平成{}年度-所管府省名'.format(base_era - 1)],
+                row['関連する過去のレビューシートの事業番号-平成{}年度-事業番号-1'.format(base_era - 1)],
+                row['関連する過去のレビューシートの事業番号-平成{}年度-事業番号-2'.format(base_era - 1)],
+                row['関連する過去のレビューシートの事業番号-平成{}年度-事業番号-3'.format(base_era - 1)],
+            )
+            for m, p1, p2, p3 in items:
+                if m:
+                    past_project_numbers.append({
+                        '年度': base_year - 1,
+                        '府省庁': m,
+                        '事業番号1': or_none(p1),
+                        '事業番号2': or_none(p2) and '{:04}'.format(int(or_none(p2))),
+                        '事業番号3': or_none(p3),
+                    })
+        obj['関連する過去のレビューシート'] = past_project_numbers
+
         yield obj
 
 
@@ -259,18 +332,21 @@ def project_dest_path(item):
 
 def copy_rec(src, dst, overwrite):
     if isinstance(src, list):
-        keys = range(len(src))
-    if isinstance(src, dict):
-        keys = src.keys()
-    for key in keys:
-        if isinstance(src[key], list):
-            copy_rec(src[key], dst[key], overwrite)
-            continue
-        if isinstance(src[key], dict):
-            copy_rec(src[key], dst[key], overwrite)
-            continue
-        if key not in dst or overwrite:
-            dst[key] = src[key]
+        for i, (a, b) in enumerate(zip(src, dst)):
+            if isinstance(a, list) or isinstance(a, dict):
+                copy_rec(a, b, overwrite)
+            elif overwrite:
+                dst[i] = src[i]
+    else:
+        for key in src:
+            if isinstance(src[key], list) or isinstance(src[key], dict):
+                if key in dst:
+                    copy_rec(src[key], dst[key], overwrite)
+                else:
+                    dst[key] = src[key]
+                continue
+            if key not in dst or overwrite:
+                dst[key] = src[key]
 
 
 def save_project(project, overwrite):
@@ -288,7 +364,8 @@ def save_project(project, overwrite):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(dest='files', nargs='+')
-    parser.add_argument('--overwrite-property', dest='overwrite', action='store_true')
+    parser.add_argument('--overwrite-property',
+                        dest='overwrite', action='store_true')
     args = parser.parse_args()
     for obj in load_projects_from_files(args.files):
         save_project(obj, args.overwrite)

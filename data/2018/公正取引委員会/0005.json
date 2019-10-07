@@ -131,5 +131,14 @@
       ]
     }
   ],
-  "url": "https://www.jftc.go.jp/soshiki/kyotsukoukai/review/h30/H29review_saisyuu_files/h29seifukisei.pdf"
+  "url": "https://www.jftc.go.jp/soshiki/kyotsukoukai/review/h30/H29review_saisyuu_files/h29seifukisei.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "公正取引委員会",
+      "事業番号1": null,
+      "事業番号2": "0005",
+      "事業番号3": null,
+      "年度": 2015
+    }
+  ]
 }

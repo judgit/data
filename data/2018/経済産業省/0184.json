@@ -520,5 +520,28 @@
       ]
     }
   ],
-  "url": "http://www.meti.go.jp/information_2/publicoffer/review2018/saisyu/29018400METI.xlsx"
+  "url": "http://www.meti.go.jp/information_2/publicoffer/review2018/saisyu/29018400METI.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "経済産業省",
+      "事業番号1": null,
+      "事業番号2": "0195",
+      "事業番号3": null,
+      "年度": 2011
+    },
+    {
+      "府省庁": "経済産業省",
+      "事業番号1": null,
+      "事業番号2": "0196",
+      "事業番号3": null,
+      "年度": 2012
+    },
+    {
+      "府省庁": "経済産業省",
+      "事業番号1": null,
+      "事業番号2": "0202",
+      "事業番号3": null,
+      "年度": 2013
+    }
+  ]
 }

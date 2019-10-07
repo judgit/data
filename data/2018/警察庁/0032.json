@@ -476,5 +476,28 @@
       ]
     }
   ],
-  "url": "https://www.npa.go.jp/policies/budget/review/h30/reviewsheet/29003200.pdf"
+  "url": "https://www.npa.go.jp/policies/budget/review/h30/reviewsheet/29003200.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "警察庁",
+      "事業番号1": null,
+      "事業番号2": "0003",
+      "事業番号3": null,
+      "年度": 2011
+    },
+    {
+      "府省庁": "警察庁",
+      "事業番号1": null,
+      "事業番号2": "0021",
+      "事業番号3": null,
+      "年度": 2012
+    },
+    {
+      "府省庁": "警察庁",
+      "事業番号1": null,
+      "事業番号2": "0022",
+      "事業番号3": null,
+      "年度": 2013
+    }
+  ]
 }

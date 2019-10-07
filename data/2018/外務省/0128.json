@@ -1010,5 +1010,14 @@
       ]
     }
   ],
-  "url": "https://www.mofa.go.jp/mofaj/files/000396755.xlsx"
+  "url": "https://www.mofa.go.jp/mofaj/files/000396755.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "外務省",
+      "事業番号1": null,
+      "事業番号2": "0129",
+      "事業番号3": null,
+      "年度": 2012
+    }
+  ]
 }

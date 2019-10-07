@@ -479,5 +479,14 @@
       ]
     }
   ],
-  "url": "https://www.cao.go.jp/yosan/excel/h30/s29012900_naikakufu.xls"
+  "url": "https://www.cao.go.jp/yosan/excel/h30/s29012900_naikakufu.xls",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "内閣府",
+      "事業番号1": "新29",
+      "事業番号2": "0014",
+      "事業番号3": null,
+      "年度": 2017
+    }
+  ]
 }

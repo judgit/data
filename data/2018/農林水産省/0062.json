@@ -228,5 +228,21 @@
       ]
     }
   ],
-  "url": "http://www.maff.go.jp/j/budget/review/h30/saisyu/xls/sama/290062_nousui_s.xlsx"
+  "url": "http://www.maff.go.jp/j/budget/review/h30/saisyu/xls/sama/290062_nousui_s.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "農林水産省",
+      "事業番号1": "新29",
+      "事業番号2": "0008",
+      "事業番号3": null,
+      "年度": 2017
+    },
+    {
+      "府省庁": "農林水産省",
+      "事業番号1": "新29",
+      "事業番号2": "0009",
+      "事業番号3": null,
+      "年度": 2017
+    }
+  ]
 }

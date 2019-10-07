@@ -210,5 +210,14 @@
       ]
     }
   ],
-  "url": "http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h30_res/h29past/0004.xlsx"
+  "url": "http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h30_res/h29past/0004.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "防衛省",
+      "事業番号1": null,
+      "事業番号2": "0004",
+      "事業番号3": "0",
+      "年度": 2010
+    }
+  ]
 }

@@ -131,5 +131,14 @@
       ]
     }
   ],
-  "url": "https://www.ppc.go.jp/files/pdf/3009_review_hogohyouka.pdf"
+  "url": "https://www.ppc.go.jp/files/pdf/3009_review_hogohyouka.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "個人情報保護委員会",
+      "事業番号1": null,
+      "事業番号2": "0002",
+      "事業番号3": null,
+      "年度": 2014
+    }
+  ]
 }

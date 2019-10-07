@@ -110,5 +110,14 @@
   "アウトカム": [],
   "定量的な目標が設定できない理由": "地域包括ケアシステムの構築に向けた先進的・モデル事業の実施については、各市町村が作成する先進的事業整備計画に基づき実施しているため。",
   "アウトプット": [],
-  "url": "https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2018/h29_xls_saisyu/802.xlsx"
+  "url": "https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2018/h29_xls_saisyu/802.xlsx",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "厚生労働省",
+      "事業番号1": null,
+      "事業番号2": "0806",
+      "事業番号3": null,
+      "年度": 2010
+    }
+  ]
 }

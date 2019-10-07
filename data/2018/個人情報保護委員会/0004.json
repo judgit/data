@@ -317,5 +317,14 @@
       ]
     }
   ],
-  "url": "https://www.ppc.go.jp/files/pdf/3009_review_kokusai.pdf"
+  "url": "https://www.ppc.go.jp/files/pdf/3009_review_kokusai.pdf",
+  "関連する過去のレビューシート": [
+    {
+      "府省庁": "個人情報保護委員会",
+      "事業番号1": null,
+      "事業番号2": "0004",
+      "事業番号3": null,
+      "年度": 2014
+    }
+  ]
 }
