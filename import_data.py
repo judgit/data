@@ -2,6 +2,7 @@ import argparse
 import csv
 import json
 import os
+from util import project_dest_path, write_json
 
 
 digits = {
@@ -134,6 +135,8 @@ def load_projects_ja(base_year, inpath):
         row = {h: item[ix[0]] if len(ix) == 1 else [item[i]
                                                     for i in ix] for h, ix in indices.items()}
         obj = {}
+        obj['ID'] = None
+        obj['事業ID'] = None
         obj['公開年度'] = base_year
         obj['事業名'] = row['事業名'].strip()
         if not obj['事業名']:
@@ -302,15 +305,33 @@ def load_projects_ja(base_year, inpath):
                 row['関連する過去のレビューシートの事業番号-平成{}年度-事業番号-3'.format(base_era - 1)],
             )
             for m, p1, p2, p3 in items:
-                if m:
+                p1 = or_none(p1)
+                p2 = or_none(p2)
+                p3 = or_none(p3)
+                if m and (p1 or p2 or p3):
                     past_project_numbers.append({
                         '年度': base_year - 1,
                         '府省庁': m,
-                        '事業番号1': or_none(p1),
-                        '事業番号2': or_none(p2) and '{:04}'.format(int(or_none(p2))),
-                        '事業番号3': or_none(p3),
+                        '事業番号1': p1,
+                        '事業番号2': p2 and '{:04}'.format(int(p2)),
+                        '事業番号3': p3,
                     })
         obj['関連する過去のレビューシート'] = past_project_numbers
+
+        if len(obj['関連する過去のレビューシート']) == 1:
+            past_project_number = obj['関連する過去のレビューシート'][0]
+            if past_project_number['府省庁'] == obj['府省庁']:
+                print(past_project_number)
+                past_project_path = project_dest_path({
+                    '公開年度': past_project_number['年度'],
+                    '府省庁': past_project_number['府省庁'],
+                    '事業番号1': past_project_number['事業番号1'],
+                    '事業番号2': past_project_number['事業番号2'],
+                    '事業番号3': past_project_number['事業番号3'],
+                })
+                if os.path.exists(past_project_path):
+                    past_obj = json.load(open(past_project_path))
+                    obj['事業ID'] = past_obj['事業ID']
 
         yield obj
 
@@ -321,14 +342,6 @@ def load_projects_from_files(paths):
         print(year)
         for obj in load_projects_ja(year, path):
             yield obj
-
-
-def project_number(item):
-    return '-'.join([v for v in [item['事業番号{}'.format(i)] for i in range(1, 4)] if v])
-
-
-def project_dest_path(item):
-    return 'data/{}/{}/{}.json'.format(item['公開年度'], item['府省庁'], project_number(item))
 
 
 def copy_rec(src, dst, overwrite):
@@ -352,15 +365,13 @@ def copy_rec(src, dst, overwrite):
 
 def save_project(project, overwrite):
     path = project_dest_path(project)
-    os.makedirs(os.path.dirname(path), exist_ok=True)
     if not os.path.exists(path):
-        json.dump(project, open(path, 'w'), ensure_ascii=False, indent=2)
+        write_json(project)
         return
     with open(path) as f:
         dst = json.load(f)
     copy_rec(project, dst, overwrite)
-    with open(path, 'w') as f:
-        json.dump(dst, f, ensure_ascii=False, indent=2)
+    write_json(dst)
 
 
 def main():
