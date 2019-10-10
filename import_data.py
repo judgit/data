@@ -32,6 +32,7 @@ digits = {
 era_offset = {
     '昭和': 1925,
     '平成': 1988,
+    '令和': 2018,
 }
 
 
@@ -351,6 +352,7 @@ def copy_rec(src, dst, overwrite):
 
 def save_project(project, overwrite):
     path = project_dest_path(project)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     if not os.path.exists(path):
         json.dump(project, open(path, 'w'), ensure_ascii=False, indent=2)
         return
