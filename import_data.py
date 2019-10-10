@@ -137,6 +137,7 @@ def load_projects_ja(base_year, inpath):
         obj = {}
         obj['ID'] = None
         obj['事業ID'] = None
+        obj['url'] = None
         obj['公開年度'] = base_year
         obj['事業名'] = row['事業名'].strip()
         if not obj['事業名']:
@@ -321,7 +322,6 @@ def load_projects_ja(base_year, inpath):
         if len(obj['関連する過去のレビューシート']) == 1:
             past_project_number = obj['関連する過去のレビューシート'][0]
             if past_project_number['府省庁'] == obj['府省庁']:
-                print(past_project_number)
                 past_project_path = project_dest_path({
                     '公開年度': past_project_number['年度'],
                     '府省庁': past_project_number['府省庁'],
