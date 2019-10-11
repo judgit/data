@@ -6,9 +6,11 @@
 
 # 配布用データ
 
-* [JSON](https://www.dropbox.com/s/dc0zsjxtkxucgww/judgit.20191001.json?dl=0)
-* [JSON（改行区切り）](https://www.dropbox.com/s/zmp14vrt5eat30m/judgit.20191001.ndjson?dl=0)
-* [RDF Turtle](https://www.dropbox.com/s/kp8upqodxtptwg3/judgit.20191001.rdf?dl=0)
+更新日：2019年10月11日
+
+* [JSON](https://www.dropbox.com/s/sf35sz23iq6x1ow/judgit.2019-10-11.json?dl=0)
+* [JSON（改行区切り）](https://www.dropbox.com/s/uu42027aaxsh1je/judgit.2019-10-11.ndjson?dl=0)
+* [RDF Turtle](https://www.dropbox.com/s/xf7msqguqjd4e2c/judgit.2019-10-11.rdf?dl=0)
 
 # LICENSE
 
