@@ -126,7 +126,7 @@ def parse_project_number(t, ministry, year):
 
 def load_projects_ja(base_year, inpath):
     base_era = base_year - 1988
-    data = csv.reader(open(inpath))
+    data = csv.reader(open(inpath, encoding='utf-8-sig'))
     header = next(data)
     indices = {h: [i for i, h2 in enumerate(
         header) if h == h2] for h in header}
