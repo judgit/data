@@ -21,6 +21,8 @@ class CAASpider(scrapy.Spider):
             'https://www.caa.go.jp/policies/budget/review/2018/review_sheet_003/',
             'https://www.caa.go.jp/policies/budget/review/2018/review_sheet_004/',
             'https://www.caa.go.jp/policies/budget/review/2019/review_sheet_002/',
+            'https://www.caa.go.jp/policies/budget/review/2020/review_sheet_004.html',
+            'https://www.caa.go.jp/policies/budget/review/2020/review_sheet_005/',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

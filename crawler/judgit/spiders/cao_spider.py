@@ -18,6 +18,7 @@ class CAOSpider(scrapy.Spider):
             'https://www.cao.go.jp/yosan/review_29_2.html',
             'https://www.cao.go.jp/yosan/review_30_2.html',
             'https://www.cao.go.jp/yosan/review_1_2.html',
+            'https://www.cao.go.jp/yosan/review_2_3.html'
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

@@ -20,6 +20,8 @@ class JTFCSpider(scrapy.Spider):
             'https://www.jftc.go.jp/soshiki/kyotsukoukai/review/h30/H29review_saisyuu.html',
             'https://www.jftc.go.jp/soshiki/kyotsukoukai/review/h30/H30kaisinoreview_saisyuu.html',
             'https://www.jftc.go.jp/soshiki/kyotsukoukai/review/2019/H30review_saisyuu.html',
+            'https://www.jftc.go.jp/soshiki/kyotsukoukai/review/r2/r1review_saisyuu.html',
+            'https://www.jftc.go.jp/soshiki/kyotsukoukai/review/r2/r2kaishinoreview_saisyuu.html',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

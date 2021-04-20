@@ -13,6 +13,7 @@ class FSASpider(scrapy.Spider):
             'https://www.fsa.go.jp/common/budget/kourituka/03_h29/saisyu/saisyu.html',
             'https://www.fsa.go.jp/common/budget/kourituka/03_h30/saisyu/saisyu.html',
             'https://www.fsa.go.jp/common/budget/kourituka/03_h31/saisyuu.html',
+            'https://www.fsa.go.jp/common/budget/kourituka/03_R2/saisyuu.html',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

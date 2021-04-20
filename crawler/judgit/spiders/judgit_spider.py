@@ -20,6 +20,8 @@ class JudgitSpider(scrapy.Spider):
             (False, '法務省', 'http://www.moj.go.jp/kaikei/bunsho/kaikei11_04486.html', 30, 31),
             (False, '法務省', 'http://www.moj.go.jp/kaikei/bunsho/kaikei03_00127.html', 31, 30),
             (False, '法務省', 'http://www.moj.go.jp/kaikei/bunsho/kaikei03_00124.html', 31, 31),
+            (False, '法務省', 'http://www.moj.go.jp/kaikei/bunsho/kaikei03_00032.html', 32, 31),
+            (False, '法務省', 'http://www.moj.go.jp/kaikei/bunsho/kaikei03_00033.html', 32, 32),
             (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page22_002218.html', 27, 26),
             (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page22_002236.html', 27, 27),
             (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page22_002250.html', 27, 28),
@@ -35,6 +37,9 @@ class JudgitSpider(scrapy.Spider):
             (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page23_003069.html', 31, 30),
             (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page23_003088.html', 31, 31),
             (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page25_001978.html', 31, 32),
+            (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page22_003411.html', 32, 31),
+            (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page22_003443.html', 32, 32),
+            (True, '外務省', 'https://www.mofa.go.jp/mofaj/ms/fa/page22_003445.html', 32, 33),
             (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/2015/saishu/2014reviewsaishukohyo.htm', 27, 26),
             (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/2015/saishu/saishu_28_shinki.htm', 27, 28),
             (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/2015reviewsaishukohyo.htm', 28, 27),
@@ -48,6 +53,9 @@ class JudgitSpider(scrapy.Spider):
             (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/2018review_saishukohyo.html', 31, 30),
             (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/2019shinki_saishukohyo.html', 31, 31),
             (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/saishu_2_shinki.html', 31, 32),
+            (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/2019review_saishukohyo.html', 32, 31),
+            (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/2020shinki_saishukohyo.html', 32, 32),
+            (False, '財務省', 'https://www.mof.go.jp/about_mof/mof_budget/review/saishu_3_shinki.html', 32, 33),
             (True, '文部科学省', 'http://www.mext.go.jp/a_menu/kouritsu/detail/1361566.htm', 27, 26),
             (True, '文部科学省', 'http://www.mext.go.jp/a_menu/kouritsu/detail/1361618.htm', 27, 27),
             (True, '文部科学省', 'http://www.mext.go.jp/a_menu/kouritsu/detail/1361964.htm', 27, 28),
@@ -64,6 +72,9 @@ class JudgitSpider(scrapy.Spider):
             (True, '文部科学省', 'http://www.mext.go.jp/a_menu/kouritsu/detail/1419388.htm', 31, 30),
             (True, '文部科学省', 'http://www.mext.go.jp/a_menu/kouritsu/detail/1419522.htm', 31, 31),
             (True, '文部科学省', 'http://www.mext.go.jp/a_menu/kouritsu/detail/1421137.htm', 31, 32),
+            (True, '文部科学省', 'https://www.mext.go.jp/a_menu/kouritsu/detail/block30_00005.htm', 32, 31),
+            (True, '文部科学省', 'https://www.mext.go.jp/a_menu/kouritsu/detail/block30_00006.htm', 32, 32),
+            (True, '文部科学省', 'https://www.mext.go.jp/a_menu/kouritsu/detail/block30_00007.htm', 32, 33),
             (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2015/h26_saisyu.html', 27, 26),
             (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2015/h27_saisyu.html', 27, 27),
             (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2015/h28_saisyu.html', 27, 28),
@@ -79,6 +90,9 @@ class JudgitSpider(scrapy.Spider):
             (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2019/h30_saisyu.html', 31, 30),
             (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2019/2019_saisyu.html', 31, 31),
             (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2019/2020_saisyu.html', 31, 32),
+            (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2020/2019_saisyu.html', 32, 31),
+            (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2020/2020_saisyu.html', 32, 32),
+            (True, '厚生労働省', 'https://www.mhlw.go.jp/jigyo_shiwake/gyousei_review_sheet/2020/2021_saisyu.html', 32, 33),
             (True, '農林水産省', 'http://www.maff.go.jp/j/budget/review/h27/27syukei.html', 27, 26),
             (False, '農林水産省', 'http://www.maff.go.jp/j/budget/review/h27/27itiran_syu.html', 27, 27),
             (False, '農林水産省', 'http://www.maff.go.jp/j/budget/review/h27/28sinki.html', 27, 28),
@@ -94,6 +108,9 @@ class JudgitSpider(scrapy.Spider):
             (True, '農林水産省', 'http://www.maff.go.jp/j/budget/review/h31/30s.html', 31, 30),
             (False, '農林水産省', 'http://www.maff.go.jp/j/budget/review/h31/31s.html', 31, 31),
             (False, '農林水産省', 'http://www.maff.go.jp/j/budget/review/h31/2s.html', 31, 32),
+            (False, '農林水産省', 'https://www.maff.go.jp/j/budget/review/R2/01f.html', 32, 31),
+            (False, '農林水産省', 'https://www.maff.go.jp/j/budget/review/R2/02f.html', 32, 32),
+            (False, '農林水産省', 'https://www.maff.go.jp/j/budget/review/R2/03f.html', 32, 33),
             (False, '経済産業省', 'http://www.meti.go.jp/information_2/publicoffer/review2015/1-1saisyu.html', 27, 26),
             (False, '経済産業省', 'http://www.meti.go.jp/information_2/publicoffer/review2015/1-2saisyu.html', 27, 26),
             (False, '経済産業省', 'http://www.meti.go.jp/information_2/publicoffer/review2015/1-3saisyu.html', 27, 26),
@@ -182,6 +199,23 @@ class JudgitSpider(scrapy.Spider):
             (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2019/saisyu/2-7saisyu.html', 31, 31),
             (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2019/saisyu/2-8saisyu.html', 31, 31),
             (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2019/saisyu/3saisyu.html', 31, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-1saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-2saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-3saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-4saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-5saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-6saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-7saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/1-8saisyu.html', 32, 31),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-1saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-2saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-3saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-4saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-5saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-6saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-7saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/2-8saisyu.html', 32, 32),
+            (False, '経済産業省', 'https://www.meti.go.jp/information_2/publicoffer/review2020/saisyu/3saisyu.html', 32, 33),
             (True, '国土交通省', 'http://www.mlit.go.jp/page/kanbo05_hy_001060.html', 27, 26),
             (True, '国土交通省', 'http://www.mlit.go.jp/page/kanbo05_hy_001061.html', 27, 27),
             (True, '国土交通省', 'http://www.mlit.go.jp/page/kanbo05_hy_001063.html', 27, 28),
@@ -197,6 +231,9 @@ class JudgitSpider(scrapy.Spider):
             (True, '国土交通省', 'http://www.mlit.go.jp/page/kanbo05_hy_001856.html', 31, 30),
             (True, '国土交通省', 'http://www.mlit.go.jp/page/kanbo05_hy_001922.html', 31, 31),
             (True, '国土交通省', 'http://www.mlit.go.jp/page/kanbo05_hy_001923.html', 31, 32),
+            (True, '国土交通省', 'https://www.mlit.go.jp/page/kanbo05_hy_002158.html', 32, 31),
+            (True, '国土交通省', 'https://www.mlit.go.jp/page/kanbo05_hy_002159.html', 32, 32),
+            (True, '国土交通省', 'https://www.mlit.go.jp/page/kanbo05_hy_002185.html', 32, 33),
             (True, '環境省', 'https://www.env.go.jp/guide/budget/spv_eff/review_h27/sheets_h26f.html', 27, 26),
             (True, '環境省', 'https://www.env.go.jp/guide/budget/spv_eff/review_h27/sheets_h27f.html', 27, 27),
             (True, '環境省', 'https://www.env.go.jp/guide/budget/spv_eff/review_h27/sheets_h28f.html', 27, 28),
@@ -212,6 +249,9 @@ class JudgitSpider(scrapy.Spider):
             (True, '環境省', 'https://www.env.go.jp/guide/budget/review/2019/sheets/h30_f/sheets.html', 31, 30),
             (True, '環境省', 'https://www.env.go.jp/guide/budget/review/2019/sheets/h31_f/sheets.html', 31, 31),
             (True, '環境省', 'https://www.env.go.jp/guide/budget/review/2019/sheets/r02/sheets.html', 31, 32),
+            (True, '環境省', 'https://www.env.go.jp/guide/budget/review/2020/sheets/h31_f/sheets.html', 32, 31),
+            (True, '環境省', 'https://www.env.go.jp/guide/budget/review/2020/sheets/r02_f/sheets.html', 32, 32),
+            (True, '環境省', 'https://www.env.go.jp/guide/budget/review/2020/sheets/r03/sheets.html', 32, 33),
             (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/h27_jigyou/saisyu/h26sheet/sesaku1.html', 27, 26),
             (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/h27_jigyou/saisyu/h26sheet/sesaku2.html', 27, 26),
             (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/h27_jigyou/saisyu/h26sheet/sesaku3.html', 27, 26),
@@ -253,21 +293,14 @@ class JudgitSpider(scrapy.Spider):
             (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/h31_jigyou/h30saisyu6.html', 31, 30),
             (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/h31_jigyou/r1startedsaisyu4.html', 31, 31),
             (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/h31_jigyou/r2startsaisyu4.html', 31, 32),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h27_res/reviewsheet_index.html', 27, 26),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h27_res/27_review.html', 27, 27),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h27_res/reviewsheet28_index.html', 27, 28),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h28_res/h27past_index.html', 28, 27),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h28_res/h28current_index.html', 28, 28),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h28_res/h29next_index.html', 28, 29),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h29_res/h28past_index.html', 29, 28),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h29_res/h29current_index.html', 29, 29),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h29_res/h30next_index.html', 29, 30),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h30_res/h29past_index.html', 30, 29),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h30_res/h30current_index.html', 30, 30),
-            (True, '防衛省', 'http://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h30_res/h31next_index.html', 30, 31),
-            (True, '防衛省', 'https://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h31/rev_fin_h30.html', 31, 30),
-            (True, '防衛省', 'https://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h31/rev_fin_h31.html', 31, 31),
-            (True, '防衛省', 'https://www.mod.go.jp/j/approach/hyouka/kouritsuka/rev_suishin/h31/rev_fin_r02.html', 31, 32),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/2019saisyu1.html', 32, 31),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/2019saisyu2.html', 32, 31),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/2019saisyu3.html', 32, 31),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/2019saisyu4.html', 32, 31),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/2019saisyu5.html', 32, 31),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/2019saisyu6.html', 32, 31),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/r2startedsaisyu4.html', 32, 32),
+            (False, '原子力規制委員会', 'https://www.nsr.go.jp/nra/seisakujikkou/budget/2020_jigyou/r3startsaisyu4.html', 32, 33),
         ]
         for f, m, url, y1, y2 in urls:
             meta = {
@@ -325,6 +358,7 @@ class JudgitSpider(scrapy.Spider):
                 ignore = [
                     '  22 国際競争力・地域の自立等を強化する道路ネットワークを形成する（再掲のみ）',
                     '）',
+                    '21 景観に優れた国土・観光地づくりを推進する（新32-032）',
                 ]
                 if text_content(a.css('*::text')) in ignore:
                     continue
@@ -390,6 +424,10 @@ class JudgitSpider(scrapy.Spider):
                     continue
                 if text == '051':
                     continue
+                if text == '238':
+                    continue
+                if text == '334':
+                    continue
                 if not text.strip():
                     continue
                 yield a
@@ -439,6 +477,14 @@ class JudgitSpider(scrapy.Spider):
                 return '349'
             if text == '350建設業における女性活躍の推進（土地・建設産業局）':
                 return '350'
+            if text == '095気候・海洋情報処理業務（気象庁）':
+                return '095'
+            if text == '222北東アジア港湾局長会議等に必要な経費（港湾局）':
+                return '222'
+            if text == '宿泊施設における生産性向上（観光庁）':
+                return '238'
+            if text == '主要都市における高度利用地の地価分析調査（土地・建設産業局）':
+                return '334'
             return text.split()[0]
 
     def parse_project_number(self, response, project_number):
@@ -485,7 +531,9 @@ class JudgitSpider(scrapy.Spider):
             return m[2].strip()
         if ministry in {'農林水産省', '経済産業省'}:
             text = text_content(row.css('*::text'))
-            if target_year >= report_year:
+            if report_year >= 32:
+                return text.split()[1]
+            elif target_year >= report_year:
                 m = re.match(r'^(新\d{2}-\d{4}):?(.+)[(（].+[)）]', text)
             elif not text.endswith('）'):
                 return text.split()[1]
@@ -504,6 +552,20 @@ class JudgitSpider(scrapy.Spider):
                 return '建設分野における外国人受入れの円滑化及び適正化'
             if text == '350建設業における女性活躍の推進（土地・建設産業局）':
                 return '建設業における女性活躍の推進'
+            if text == '02':
+                return '総合的なバリアフリー社会の形成の推進'
+            if text == '095気候・海洋情報処理業務（気象庁）':
+                return '気候・海洋情報処理業務'
+            if text == '212 内航海運の効率化に必要な経費（海事局）':
+                return '内航海運の効率化に必要な経費'
+            if text == '214 港湾整備事業（港湾局）':
+                return '港湾整備事業'
+            if text == '222北東アジア港湾局長会議等に必要な経費（港湾局）':
+                return '北東アジア港湾局長会議等に必要な経費'
+            if text == '宿泊施設における生産性向上（観光庁）':
+                return '宿泊施設における生産性向上'
+            if text == '主要都市における高度利用地の地価分析調査（土地・建設産業局）':
+                return '主要都市における高度利用地の地価分析調査'
             return text.split()[1]
         if ministry in {'環境省', '原子力規制委員会'}:
             return text_content(row.css('a::text')).split('[Excel')[0]

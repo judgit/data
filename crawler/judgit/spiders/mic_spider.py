@@ -15,6 +15,7 @@ class MICSpider(scrapy.Spider):
             'http://www.soumu.go.jp/menu_yosan/jigyou29/kizon/kizon_h28.html',
             'http://www.soumu.go.jp/menu_yosan/jigyou30/kizon/kizon_h29.html',
             'http://www.soumu.go.jp/menu_yosan/jigyou31/kizon/kizon_h30.html',
+            'https://www.soumu.go.jp/menu_yosan/jigyou31/kizon/kizon_h31.html',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse, meta={'parent': True})
@@ -27,6 +28,8 @@ class MICSpider(scrapy.Spider):
             'http://www.soumu.go.jp/menu_yosan/jigyou30/youkyu/youkyu_h31.html',
             'http://www.soumu.go.jp/menu_yosan/jigyou31/shinki/shinki_h31.html',
             'http://www.soumu.go.jp/menu_yosan/jigyou31/youkyu/youkyu_r2.html',
+            'https://www.soumu.go.jp/menu_yosan/jigyou1/shinki/shinki_r1.html',
+            'https://www.soumu.go.jp/menu_yosan/jigyou2/youkyu/youkyu_r3.html',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

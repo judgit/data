@@ -23,6 +23,9 @@ class ReconstructionSpider(scrapy.Spider):
             (2019, 2018, 'http://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_r01/rs2019page/2019H30jigyou-summery.html'),
             (2019, 2019, 'http://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_r01/rs2019page/2019R01jigyou-summery.html'),
             (2019, 2020, 'http://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_r01/rs2019page/r01r02rs-matome.html'),
+            (2020, 2019, 'https://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_r02/rs2020page/20200811112220.html'),
+            (2020, 2020, 'https://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_r02/rs2020page/20200819172600.html'),
+            (2020, 2021, 'https://www.reconstruction.go.jp/topics/main-cat8/sub-cat8-3/review_r02/rs2020page/20201016175247.html'),
         ]
         for y1, y2, url in urls:
             yield scrapy.Request(url=url, callback=self.parse, meta={'y1': y1, 'y2': y2})

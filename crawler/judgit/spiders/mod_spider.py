@@ -3,8 +3,8 @@ from judgit.items import JudgitItem
 from judgit import id_string, text_content
 
 
-class NPASpider(scrapy.Spider):
-    name = 'npa'
+class MODSpider(scrapy.Spider):
+    name = 'mod'
 
     def start_requests(self):
         urls = [
@@ -61,7 +61,7 @@ class NPASpider(scrapy.Spider):
             else:
                 url = tr.css('td:nth-child(3) a').attrib['href']
             item['url'] = 'https://www.npa.go.jp' + url
-            item['ministry'] = '警察庁'
+            item['ministry'] = '防衛省'
             name = text_content(tr.css('td:nth-child(2) *::text'))
             item['project_name'] = name
             item['year'] = year

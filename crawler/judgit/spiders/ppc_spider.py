@@ -14,6 +14,7 @@ class PPCSpider(scrapy.Spider):
             'https://www.ppc.go.jp/news/budget/2017review/',
             'https://www.ppc.go.jp/news/budget/2018review/',
             'https://www.ppc.go.jp/aboutus/budget/2019review/',
+            'https://www.ppc.go.jp/aboutus/budget/2020review/',
         ]
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse)

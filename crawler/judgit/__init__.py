@@ -10,6 +10,7 @@ def id_string(s):
         ord('７'): '7',
         ord('８'): '8',
         ord('９'): '9',
+        ord(':'): '',
     })
     return '{:04}'.format(int(s))
 
