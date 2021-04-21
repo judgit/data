@@ -76,6 +76,14 @@ def try_float(s):
         return float(s)
     except ValueError:
         return None
+    except TypeError:
+        return None
+
+
+def list_get(l, i, default=None):
+    if i < 0 or len(l) <= i:
+        return default
+    return l[i]
 
 
 def is_digit(s):
@@ -125,8 +133,7 @@ def parse_project_number(t, ministry, year):
 
 
 def load_projects_ja(base_year, inpath):
-    base_era = base_year - 1988
-    data = csv.reader(open(inpath, encoding='utf-8-sig'))
+    data = csv.reader(open(inpath))
     header = next(data)
     indices = {h: [i for i, h2 in enumerate(
         header) if h == h2] for h in header}
@@ -181,46 +188,46 @@ def load_projects_ja(base_year, inpath):
         obj['予算'] = [
             {
                 '年度': base_year - 3,
-                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_era - 3)], 0)),
-                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_era - 3)], 0)),
-                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_era - 3)], 0)),
-                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_era - 3)], 0)),
-                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_era - 3)], 0)),
-                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_era - 3)], 0)),
-                '執行額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-執行額'.format(base_era - 3)], 0)),
+                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_year - 3)], 0)),
+                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_year - 3)], 0)),
+                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_year - 3)], 0)),
+                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_year - 3)], 0)),
+                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_year - 3)], 0)),
+                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_year - 3)], 0)),
+                '執行額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-執行額'.format(base_year - 3)], 0)),
             },
             {
                 '年度': base_year - 2,
-                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_era - 2)], 0)),
-                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_era - 2)], 0)),
-                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_era - 2)], 0)),
-                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_era - 2)], 0)),
-                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_era - 2)], 0)),
-                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_era - 2)], 0)),
-                '執行額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-執行額'.format(base_era - 2)], 0)),
+                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_year - 2)], 0)),
+                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_year - 2)], 0)),
+                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_year - 2)], 0)),
+                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_year - 2)], 0)),
+                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_year - 2)], 0)),
+                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_year - 2)], 0)),
+                '執行額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-執行額'.format(base_year - 2)], 0)),
             },
             {
                 '年度': base_year - 1,
-                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_era - 1)], 0)),
-                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_era - 1)], 0)),
-                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_era - 1)], 0)),
-                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_era - 1)], 0)),
-                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_era - 1)], 0)),
-                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_era - 1)], 0)),
-                '執行額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-執行額'.format(base_era - 1)], 0)),
+                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_year - 1)], 0)),
+                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_year - 1)], 0)),
+                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_year - 1)], 0)),
+                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_year - 1)], 0)),
+                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_year - 1)], 0)),
+                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_year - 1)], 0)),
+                '執行額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-執行額'.format(base_year - 1)], 0)),
             },
             {
                 '年度': base_year,
-                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_era)], 0)),
-                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_era)], 0)),
-                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_era)], 0)),
-                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_era)], 0)),
-                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_era)], 0)),
-                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_era)], 0)),
+                '当初予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-当初予算'.format(base_year)], 0)),
+                '補正予算': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-補正予算'.format(base_year)], 0)),
+                '前年度から繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-前年度から繰越し'.format(base_year)], 0)),
+                '翌年度へ繰越し': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-翌年度へ繰越し'.format(base_year)], 0)),
+                '予備費等': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-予備費等'.format(base_year)], 0)),
+                '予算計': float(or_none(row['予算額・執行額（単位:百万円）-{}年度-予算の状況-計'.format(base_year)], 0)),
             },
             {
                 '年度': base_year + 1,
-                '要求額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度要求-予算の状況-計'.format(base_era + 1)], 0)),
+                '要求額': float(or_none(row['予算額・執行額（単位:百万円）-{}年度要求-予算の状況-計'.format(base_year + 1)], 0)),
             },
         ]
         payee = []
@@ -241,26 +248,26 @@ def load_projects_ja(base_year, inpath):
 
         obj['アウトカム'] = [
             {
-                '成果目標': row['成果目標及び成果実績（アウトカム）-定量的な成果目標'][i],
-                '成果指標': row['成果目標及び成果実績（アウトカム）-成果指標'][i],
-                '単位': row['成果目標及び成果実績（アウトカム）-単位-成果実績'][i],
-                '目標値': or_none(row['成果目標及び成果実績（アウトカム）-目標最終年度-目標値'][i]),
-                '目標最終年度': convert_era(or_none(row['成果目標及び成果実績（アウトカム）-目標最終年度-年度'][i]), '平成'),
+                '成果目標': or_none(list_get(row['成果目標及び成果実績（アウトカム）-定量的な成果目標'], i)),
+                '成果指標': or_none(list_get(row['成果目標及び成果実績（アウトカム）-成果指標'], i)),
+                '単位': or_none(list_get(row['成果目標及び成果実績（アウトカム）-単位-成果実績'], i)),
+                '目標値': or_none(list_get(row['成果目標及び成果実績（アウトカム）-目標最終年度-目標値'], i)),
+                '目標最終年度': convert_era(or_none(list_get(row['成果目標及び成果実績（アウトカム）-目標最終年度-年度'], i)), '令和'),
                 '成果実績': [
                     {
                         '年度': base_year - 3,
-                        '成果実績': try_float(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_era - 3)][i]),
-                        '目標値': try_float(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_era - 3)][i]),
+                        '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 3)], i)),
+                        '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 3)], i)),
                     },
                     {
                         '年度': base_year - 2,
-                        '成果実績': try_float(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_era - 2)][i]),
-                        '目標値': try_float(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_era - 2)][i]),
+                        '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 2)], i)),
+                        '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 2)], i)),
                     },
                     {
                         '年度': base_year - 1,
-                        '成果実績': try_float(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_era - 1)][i]),
-                        '目標値': try_float(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_era - 1)][i]),
+                        '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 1)], i)),
+                        '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 1)], i)),
                     },
                 ],
 
@@ -278,18 +285,18 @@ def load_projects_ja(base_year, inpath):
                 '活動実績': [
                     {
                         '年度': base_year - 3,
-                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_era - 3)][i]),
-                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_era - 3)][i]),
+                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 3)][i]),
+                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 3)][i]),
                     },
                     {
                         '年度': base_year - 2,
-                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_era - 2)][i]),
-                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_era - 2)][i]),
+                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 2)][i]),
+                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 2)][i]),
                     },
                     {
                         '年度': base_year - 1,
-                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_era - 1)][i]),
-                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_era - 1)][i]),
+                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 1)][i]),
+                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 1)][i]),
                     },
                 ],
             }
@@ -298,12 +305,12 @@ def load_projects_ja(base_year, inpath):
         ]
 
         past_project_numbers = []
-        if '関連する過去のレビューシートの事業番号-平成{}年度-所管府省名'.format(base_era - 1) in row:
+        if '関連する過去のレビューシートの事業番号-{}年度-所管府省名'.format(base_year - 1) in row:
             items = zip(
-                row['関連する過去のレビューシートの事業番号-平成{}年度-所管府省名'.format(base_era - 1)],
-                row['関連する過去のレビューシートの事業番号-平成{}年度-事業番号-1'.format(base_era - 1)],
-                row['関連する過去のレビューシートの事業番号-平成{}年度-事業番号-2'.format(base_era - 1)],
-                row['関連する過去のレビューシートの事業番号-平成{}年度-事業番号-3'.format(base_era - 1)],
+                row['関連する過去のレビューシートの事業番号-{}年度-所管府省名'.format(base_year - 1)],
+                row['関連する過去のレビューシートの事業番号-{}年度-事業番号-1'.format(base_year - 1)],
+                row['関連する過去のレビューシートの事業番号-{}年度-事業番号-2'.format(base_year - 1)],
+                row['関連する過去のレビューシートの事業番号-{}年度-事業番号-3'.format(base_year - 1)],
             )
             for m, p1, p2, p3 in items:
                 p1 = or_none(p1)
@@ -353,6 +360,8 @@ def copy_rec(src, dst, overwrite):
                 dst[i] = src[i]
     else:
         for key in src:
+            if key in ('ID', '事業ID'):
+                continue
             if isinstance(src[key], list) or isinstance(src[key], dict):
                 if key in dst:
                     copy_rec(src[key], dst[key], overwrite)
