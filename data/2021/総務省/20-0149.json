@@ -69,7 +69,7 @@
     },
     {
       "年度": 2022,
-      "要求額": 0.0
+      "要求額": 400.0
     }
   ],
   "支出先": [
@@ -115,7 +115,8 @@
           "成果実績": null,
           "目標値": null
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "ITU作成資料「Choice of class of contribution for defraying the Union's expenses (C19/43)」及び「Human Resources Reporting and Statistics(  )」"
     },
     {
       "成果目標": "国際機関への貢献を通じた我が国の方針の反映及びプレゼンスの向上",
@@ -139,7 +140,8 @@
           "成果実績": null,
           "目標値": null
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "ITU作成資料「Choice of class of contribution for defraying the Union's expenses (C19/43)」及び「Human Resources Reporting and Statistics(  )」"
     }
   ],
   "アウトプット": [
@@ -165,5 +167,9 @@
       ]
     }
   ],
-  "定量的な目標が設定できない理由": null
+  "定量的な目標が設定できない理由": null,
+  "根拠法令": "総務省設置法第4条第1項第72号",
+  "関係する計画、通知等": "国際電気通信連合憲章二十八条",
+  "事業の妥当性を検証するための代替的な達成目標及び実績": [],
+  "単位当たりコスト": []
 }

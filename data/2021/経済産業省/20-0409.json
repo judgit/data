@@ -69,7 +69,7 @@
     },
     {
       "年度": 2022,
-      "要求額": 0.0
+      "要求額": 100.0
     }
   ],
   "支出先": [
@@ -106,7 +106,8 @@
           "成果実績": "193",
           "目標値": "193"
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "Member States (WIPOホームページ)\nhttp://www.wipo.int/members/en/ "
     },
     {
       "成果目標": "WIPOにおける我が国の発言力・影響力を確保するべく、調整委員会又は計画予算委員会のメンバーシップを確保する",
@@ -130,7 +131,8 @@
           "成果実績": "2",
           "目標値": "2"
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "WIPO Publication 423 (WIPOホームページ)\nhttp://www.wipo.int/treaties/en/documents/pub423.html"
     },
     {
       "成果目標": "知的財産権保護を推進するため、WIPOにおける会議を着実に開催する",
@@ -154,7 +156,8 @@
           "成果実績": "20",
           "目標値": "16"
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "Conferences, Meetings and Seminars (WIPOホームページ)\nhttp://www.wipo.int/meetings/en/\n"
     },
     {
       "成果目標": "日本のプレゼンス向上を図るべく、WIPOの職員数に占める日本人職員数の割合を高める",
@@ -178,7 +181,8 @@
           "成果実績": "2.9",
           "目標値": "6.6"
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "statistical data on geographical representation and gender balance\nP5~6 Table1. Distribution of Staff in regular-funded positions subject to Geographical Distribution as at December 31, 2020"
     },
     {
       "成果目標": "日本のプレゼンス向上を図るべく、WIPOの幹部職員数に占める日本人幹部職員数の割合を高める",
@@ -202,7 +206,8 @@
           "成果実績": "4.8",
           "目標値": "6.6"
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "statistical data on geographical representation and gender balance\nP5~6 Table1. Distribution of Staff in regular-funded positions subject to Geographical Distribution as at December 31, 2020"
     }
   ],
   "アウトプット": [
@@ -228,5 +233,9 @@
       ]
     }
   ],
-  "定量的な目標が設定できない理由": null
+  "定量的な目標が設定できない理由": null,
+  "根拠法令": "世界知的所有権機関を設立する条約第11条(2)",
+  "関係する計画、通知等": "2019年10月開催の世界知的所有権機関（WIPO）第59回加盟国総会において承認された予算",
+  "事業の妥当性を検証するための代替的な達成目標及び実績": [],
+  "単位当たりコスト": []
 }

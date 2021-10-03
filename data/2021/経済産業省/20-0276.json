@@ -12,7 +12,7 @@
   "事業概要": "分担金に加え、IRENAの活動費用を自主的に拠出することで、我が国のプレゼンスを強化する。\n具体的には、①再生可能エネルギーと水素利活用に関する調査、②世界の地熱利用促進に向けた活動への協力、③東南アジアにおける再生可能エネルギー導入推進事業等について、IRENAの活動を支援し、世界の再生可能エネルギー推進をリードする。",
   "担当部局庁": "資源エネルギー庁\n省エネルギー・新エネルギー部",
   "担当課室": "政策課国際室",
-  "作成責任者": "室長　小山　雅臣",
+  "作成責任者": "室長　星野　昌志",
   "開始年度": 2012,
   "終了年度": null,
   "会計区分": [
@@ -69,7 +69,7 @@
     },
     {
       "年度": 2022,
-      "要求額": 0.0
+      "要求額": 55.0
     }
   ],
   "支出先": [
@@ -106,7 +106,8 @@
           "成果実績": "25",
           "目標値": "33"
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "IRENA第11回総会(2021年1月)資料\nAnnual Report of the Director-General on the Implementation of the Work Programme and Budget for 2020-2021\nhttps://www.irena.org/-/media/Files/IRENA/Remember/Assembly/Eleventh-session-of-the-Assembly/A113-Annual-Report-of-the-DirectorGeneral-on-the-Implementation-of-the-Work-Programme-and-Budget-for.pdf"
     },
     {
       "成果目標": "日本再興戦略に掲げた2025年までに国連関係機関の邦人職員数を1000人とする目標に向けた水準（現行職員数の1.25倍）の達成\n※IRENAの場合は現状で3人いれば水準を達成するが、分担金の支払い規模にも鑑み2025年までに5人とすることを目標とする。",
@@ -130,7 +131,8 @@
           "成果実績": "2",
           "目標値": "5"
         }
-      ]
+      ],
+      "根拠として用いた統計・データ名": "IRENA第11回総会(2021年1月)資料\nAnnual Report of the Director-General on the Implementation of the Work Programme and Budget for 2020-2021\nhttps://www.irena.org/-/media/Files/IRENA/Remember/Assembly/Eleventh-session-of-the-Assembly/A113-Annual-Report-of-the-DirectorGeneral-on-the-Implementation-of-the-Work-Programme-and-Budget-for.pdf"
     }
   ],
   "アウトプット": [
@@ -156,5 +158,9 @@
       ]
     }
   ],
-  "定量的な目標が設定できない理由": null
+  "定量的な目標が設定できない理由": null,
+  "根拠法令": "特別会計に関する法律第85条第3項第2号\n特別会計に関する法律施行令第50条第9項3号",
+  "関係する計画、通知等": "・平成21年6月26日閣議\n「国際再生可能エネルギー機関憲章に署名することとする。」\n・国際再生可能エネルギー機関憲章の批准書のドイツ政府への寄託（平成22年7月1日）、正式加盟（平成22年7月31日）",
+  "事業の妥当性を検証するための代替的な達成目標及び実績": [],
+  "単位当たりコスト": []
 }
