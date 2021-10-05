@@ -345,10 +345,8 @@ def load_projects_ja(base_year, inpath):
 
 def load_projects_from_files(paths):
     for path in paths:
-        year = int(os.path.basename(path)[8:12])
-        print(year)
-        for obj in load_projects_ja(year, path):
-            yield obj
+        for row in open(path):
+            yield json.loads(row.strip())
 
 
 def copy_rec(src, dst, overwrite):
@@ -363,7 +361,7 @@ def copy_rec(src, dst, overwrite):
             if key in ('ID', '事業ID'):
                 continue
             if isinstance(src[key], list) or isinstance(src[key], dict):
-                if key in dst:
+                if key in dst and len(dst[key]):
                     copy_rec(src[key], dst[key], overwrite)
                 else:
                     dst[key] = src[key]

@@ -23,6 +23,7 @@ def convert(src):
     dest['summary'] = src['事業概要']
     dest['method'] = src['実施方法']
     dest['categories'] = src['主要施策']
+    dest['expenses_category'] = src.get('主要経費', [])
     dest['budget'] = [
         {
             'year': item.get('年度'),
@@ -60,8 +61,8 @@ def convert(src):
             'items': [
                 {
                     'year': item2['年度'],
-                    'achievement': str(item2['成果実績']),
-                    'target': str(item2['目標値']),
+                    'achievement': item2['成果実績'],
+                    'target': item2['目標値'],
                 }
                 for item2 in item['成果実績']
             ],
@@ -69,6 +70,24 @@ def convert(src):
         for item in src['アウトカム']
     ]
     dest['outcome_difficulty_reason'] = src.get('定量的な目標が設定できない理由')
+    dest['outcome_alternative'] = [
+        {
+            'goal': item['代替目標'],
+            'indicator': item['代替指標'],
+            'unit': item['単位'],
+            'target': str(item['目標値']),
+            'target_year': item['目標最終年度'],
+            'items': [
+                {
+                    'year': item2['年度'],
+                    'achievement': item2['実績'],
+                    'target': item2['目標値'],
+                }
+                for item2 in item['成果実績']
+            ],
+        }
+        for item in src.get('事業の妥当性を検証するための代替的な達成目標及び実績', [])
+    ]
     dest['output'] = [
         {
             'indicator': item['活動指標'],
@@ -76,13 +95,28 @@ def convert(src):
             'items': [
                 {
                     'year': item2['年度'],
-                    'achievement': str(item2['活動実績']),
-                    'expected': str(item2['当初見込み']),
+                    'achievement': item2['活動実績'],
+                    'expected': item2['当初見込み'],
                 }
                 for item2 in item['活動実績']
             ],
         }
         for item in src['アウトプット']
+    ]
+    dest['unit_cost'] = [
+        {
+            'reason': item['算出根拠'],
+            'unit': item['単位'],
+            'items': [
+                {
+                    'year': item2['年度'],
+                    'unit_cost': item2['単位当たりコスト'] and str(item2['単位当たりコスト']),
+                    'calculation': item2['計算式'] and str(item2['計算式']),
+                }
+                for item2 in item['単位当たりコスト']
+            ],
+        }
+        for item in src.get('単位当たりコスト', [])
     ]
     return dest
 

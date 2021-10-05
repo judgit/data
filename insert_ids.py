@@ -5,6 +5,11 @@ from import_data import write_json
 
 def main():
     data = [json.load(open(p)) for p in glob('./data/**/**/*.json')]
+    for item in data:
+        if 'ID' not in item:
+            item['ID'] = None
+        if '事業ID' not in item:
+            item['事業ID'] = None
     max_id = max(item['ID'] for item in data if item['ID'] is not None)
     max_project_id = max(item['事業ID']
                          for item in data if item['事業ID'] is not None)
