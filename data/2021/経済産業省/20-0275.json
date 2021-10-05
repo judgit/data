@@ -93,18 +93,18 @@
       "成果実績": [
         {
           "年度": 2018,
-          "成果実績": "18",
-          "目標値": "33"
+          "成果実績": 18.0,
+          "目標値": 33.0
         },
         {
           "年度": 2019,
-          "成果実績": "19",
-          "目標値": "33"
+          "成果実績": 19.0,
+          "目標値": 33.0
         },
         {
           "年度": 2020,
-          "成果実績": "25",
-          "目標値": "33"
+          "成果実績": 25.0,
+          "目標値": 33.0
         }
       ],
       "根拠として用いた統計・データ名": "IRENA第11回総会(2021年1月)資料\nAnnual Report of the Director-General on the Implementation of the Work Programme and Budget for 2020-2021\nhttps://www.irena.org/-/media/Files/IRENA/Remember/Assembly/Eleventh-session-of-the-Assembly/A113-Annual-Report-of-the-DirectorGeneral-on-the-Implementation-of-the-Work-Programme-and-Budget-for.pdf "
@@ -118,18 +118,18 @@
       "成果実績": [
         {
           "年度": 2018,
-          "成果実績": "2",
-          "目標値": "5"
+          "成果実績": 2.0,
+          "目標値": 5.0
         },
         {
           "年度": 2019,
-          "成果実績": "2",
-          "目標値": "5"
+          "成果実績": 2.0,
+          "目標値": 5.0
         },
         {
           "年度": 2020,
-          "成果実績": "2",
-          "目標値": "5"
+          "成果実績": 2.0,
+          "目標値": 5.0
         }
       ],
       "根拠として用いた統計・データ名": "IRENA第11回総会(2021年1月)資料\nAnnual Report of the Director-General on the Implementation of the Work Programme and Budget for 2020-2021\nhttps://www.irena.org/-/media/Files/IRENA/Remember/Assembly/Eleventh-session-of-the-Assembly/A113-Annual-Report-of-the-DirectorGeneral-on-the-Implementation-of-the-Work-Programme-and-Budget-for.pdf"
@@ -142,17 +142,17 @@
       "活動実績": [
         {
           "年度": 2018,
-          "活動実績": "11",
+          "活動実績": 11.0,
           "当初見込み": null
         },
         {
           "年度": 2019,
-          "活動実績": "11",
+          "活動実績": 11.0,
           "当初見込み": null
         },
         {
           "年度": 2020,
-          "活動実績": "11",
+          "活動実績": 11.0,
           "当初見込み": null
         }
       ]

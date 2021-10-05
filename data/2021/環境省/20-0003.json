@@ -158,8 +158,8 @@
       "成果実績": [
         {
           "年度": 2018,
-          "成果実績": "31",
-          "目標値": "34"
+          "成果実績": 31.0,
+          "目標値": 34.0
         },
         {
           "年度": 2019,
@@ -168,8 +168,8 @@
         },
         {
           "年度": 2020,
-          "成果実績": "33",
-          "目標値": "34"
+          "成果実績": 33.0,
+          "目標値": 34.0
         }
       ],
       "根拠として用いた統計・データ名": "Report on the individual review of the annual submission of Japan submitted in 2018\nReport on the individual review of the annual submission of Japan submitted in 2020"
@@ -183,18 +183,18 @@
       "成果実績": [
         {
           "年度": 2018,
-          "成果実績": "13",
-          "目標値": "13"
+          "成果実績": 13.0,
+          "目標値": 13.0
         },
         {
           "年度": 2019,
-          "成果実績": "4",
-          "目標値": "4"
+          "成果実績": 4.0,
+          "目標値": 4.0
         },
         {
           "年度": 2020,
-          "成果実績": "4",
-          "目標値": "4"
+          "成果実績": 4.0,
+          "目標値": 4.0
         }
       ],
       "根拠として用いた統計・データ名": "Report on the technical review of the seventh national communication of Japan\nReport on the technical review of the third biennial report of Japan\nReport on the technical review of the fourth biennial report of Japan"
@@ -207,18 +207,18 @@
       "活動実績": [
         {
           "年度": 2018,
-          "活動実績": "1",
-          "当初見込み": "1"
+          "活動実績": 1.0,
+          "当初見込み": 1.0
         },
         {
           "年度": 2019,
-          "活動実績": "1",
-          "当初見込み": "1"
+          "活動実績": 1.0,
+          "当初見込み": 1.0
         },
         {
           "年度": 2020,
-          "活動実績": "1",
-          "当初見込み": "1"
+          "活動実績": 1.0,
+          "当初見込み": 1.0
         }
       ]
     },
@@ -233,8 +233,8 @@
         },
         {
           "年度": 2019,
-          "活動実績": "1",
-          "当初見込み": "1"
+          "活動実績": 1.0,
+          "当初見込み": 1.0
         },
         {
           "年度": 2020,

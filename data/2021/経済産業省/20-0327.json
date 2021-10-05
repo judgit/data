@@ -201,18 +201,18 @@
       "成果実績": [
         {
           "年度": 2018,
-          "成果実績": "48",
-          "目標値": "54"
+          "成果実績": 48.0,
+          "目標値": 54.0
         },
         {
           "年度": 2019,
-          "成果実績": "44",
-          "目標値": "50"
+          "成果実績": 44.0,
+          "目標値": 50.0
         },
         {
           "年度": 2020,
-          "成果実績": "26",
-          "目標値": "30"
+          "成果実績": 26.0,
+          "目標値": 30.0
         }
       ],
       "根拠として用いた統計・データ名": "代表的な成果物：\n*久保重信他, \"A conceptual design study of pool-type sodium-cooled fast reactor with enhanced anti-seismic capability\", Mechanical Engineering Journal, 7巻3号. p. 19-00489 (2020).\n*松原慎一郎他, \"Experimental Study on the Effect of Core Support Frame on Seismic Behavior of Fast Reactor Core\", Proceedings of the ASME 2020 Pressure Vessels & Piping Conference(PVP2020) , PVP2020-21385 (2020)"
@@ -225,18 +225,18 @@
       "活動実績": [
         {
           "年度": 2018,
-          "活動実績": "39",
-          "当初見込み": "32"
+          "活動実績": 39.0,
+          "当初見込み": 32.0
         },
         {
           "年度": 2019,
-          "活動実績": "29",
-          "当初見込み": "32"
+          "活動実績": 29.0,
+          "当初見込み": 32.0
         },
         {
           "年度": 2020,
-          "活動実績": "29",
-          "当初見込み": "20"
+          "活動実績": 29.0,
+          "当初見込み": 20.0
         }
       ]
     }
