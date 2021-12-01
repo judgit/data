@@ -56,7 +56,7 @@ def convert(src):
             'goal': item['成果目標'],
             'indicator': item['成果指標'],
             'unit': item['単位'],
-            'target': item['目標値'],
+            'target': str(item['目標値']),
             'target_year': item['目標最終年度'],
             'items': [
                 {
@@ -75,7 +75,7 @@ def convert(src):
             'goal': item['代替目標'],
             'indicator': item['代替指標'],
             'unit': item['単位'],
-            'target': item['目標値'],
+            'target': str(item['目標値']),
             'target_year': item['目標最終年度'],
             'items': [
                 {
