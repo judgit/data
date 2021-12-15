@@ -1,5 +1,6 @@
 import argparse
 import csv
+import itertools
 import json
 import os
 from util import project_dest_path, write_json
@@ -351,11 +352,15 @@ def load_projects_from_files(paths):
 
 def copy_rec(src, dst, overwrite):
     if isinstance(src, list):
-        for i, (a, b) in enumerate(zip(src, dst)):
-            if isinstance(a, list) or isinstance(a, dict):
+        new_items = []
+        for i, (a, b) in enumerate(itertools.zip_longest(src, dst)):
+            if b is None:
+                new_items.append(a)
+            elif isinstance(a, list) or isinstance(a, dict):
                 copy_rec(a, b, overwrite)
             elif overwrite:
                 dst[i] = src[i]
+        dst.extend(new_items)
     else:
         for key in src:
             if key in ('ID', '事業ID'):
