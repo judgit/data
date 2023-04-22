@@ -6,11 +6,11 @@
 
 # 配布用データ
 
-更新日：2021年4月22日
+更新日：2023年2月8日
 
-* [JSON](https://www.dropbox.com/s/ffskqgdpjq6uvqt/judgit.2021-04-22.json?dl=0)
-* [JSON（改行区切り）](https://www.dropbox.com/s/zat19a731bw5e2j/judgit.2021-04-22.ndjson?dl=0)
-* [RDF Turtle](https://www.dropbox.com/s/1a8v04h8h9vkm40/judgit.2021-04-22.rdf?dl=0)
+* ~~JSON~~
+* [JSON（改行区切り）](https://storage.googleapis.com/judgit/2023-02-08/judgit.2023-02-08.ndjson)
+* ~~RDF Turtle~~
 
 # LICENSE
 
