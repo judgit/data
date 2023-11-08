@@ -6,8 +6,8 @@ from import_data import write_json
 
 def main():
     corporate_names = {
-        row['corporate_number']: row['name']
-        for row in csv.DictReader(open('./事業番号.csv'))
+        row[1]: row[6]
+        for row in csv.reader(open('./tmp/00_zenkoku_all_20231031.csv'))
     }
     data = [json.load(open(p)) for p in glob('./data/**/**/*.json')]
     for item in data:

@@ -46,15 +46,18 @@ def rename_column(name):
 
 
 def main():
-    for y in range(2015, 2021):
+    for y in range(2015, 2024):
         print(y)
-        writer = csv.writer(open('csv/database{}.csv'.format(y), 'w'))
+        f = open('csv/database{}.csv'.format(y), 'w')
+        writer = csv.writer(f)
         wb = openpyxl.load_workbook('original/database{}.xlsx'.format(y))
         sheet = wb[wb.sheetnames[0]]
-        rows = list(sheet.values)
-        writer.writerow([rename_column(c) for c in rows[0]])
-        for row in rows[1:]:
+        rows = sheet.values
+        writer.writerow([rename_column(c) for c in next(rows)])
+        f.flush()
+        for row in rows:
             writer.writerow(list(row))
+            f.flush()
 
 
 if __name__ == '__main__':

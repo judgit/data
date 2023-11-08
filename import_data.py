@@ -41,7 +41,9 @@ era_offset = {
 def convert_era(v, era):
     if v is None:
         return None
-    return int(v) + era_offset[era]
+    if era in era_offset:
+        return int(v) + era_offset[era]
+    return int(v)
 
 
 def to_year(s):
@@ -51,6 +53,8 @@ def to_year(s):
         '昭和元年度以前',
         '不明',
         '終了予定なし',
+        '未定',
+        '2048年度以降',
         '',
     }
     if s in ignore:
@@ -60,7 +64,7 @@ def to_year(s):
 
 
 def or_none(s, default=None, ignore=[]):
-    if s in ['-', '‐', '―', '－', '　', '', '記入不要'] or s in ignore:
+    if s in ['-', '‐', '―', '－', 'ｰ', '　', '', '記入不要'] or s in ignore:
         return default
     return str(s).strip()
 
@@ -159,15 +163,27 @@ def load_projects_ja(base_year, inpath):
             obj['府省庁'] = row['府省']
         if obj['府省庁'] == '特定個人情報保護委員会':
             obj['府省庁'] = '個人情報保護委員会'
-        if '事業番号-1' in row:
+        if '事業番号-4' in row:
             obj['事業番号1'] = or_none(row['事業番号-1'])
             obj['事業番号2'] = or_none(row['事業番号-2'])
             obj['事業番号3'] = or_none(row['事業番号-3'])
+            obj['事業番号4'] = or_none(row['事業番号-4'])
+            obj['事業番号5'] = or_none(row['事業番号-5'])
+            obj['事業番号4'] = '{:04}'.format(int(obj['事業番号4']))
+            if obj['事業番号5'] == '0':
+                obj['事業番号5'] = None
+            obj['事業番号'] = '-'.join([item for item in [obj['事業番号1'], obj['事業番号2'], obj['事業番号3'], obj['事業番号4'], obj['事業番号5']] if item])
         else:
-            obj['事業番号2'] = or_none(row['事業番号'])
-        obj['事業番号2'] = '{:04}'.format(int(obj['事業番号2']))
-        if obj['事業番号3'] == '0':
-            obj['事業番号3'] = None
+            if '事業番号-1' in row:
+                obj['事業番号1'] = or_none(row['事業番号-1'])
+                obj['事業番号2'] = or_none(row['事業番号-2'])
+                obj['事業番号3'] = or_none(row['事業番号-3'])
+            else:
+                obj['事業番号2'] = or_none(row['事業番号'])
+            obj['事業番号2'] = '{:04}'.format(int(obj['事業番号2']))
+            if obj['事業番号3'] == '0':
+                obj['事業番号3'] = None
+            obj['事業番号'] = '-'.join([item for item in [obj['事業番号1'], obj['事業番号2'], obj['事業番号3']] if item])
         obj['担当部局庁'] = or_none(row['担当部局庁'])
         obj['担当課室'] = or_none(row['担当課室'])
         obj['作成責任者'] = or_none(row['作成責任者'])
@@ -233,77 +249,143 @@ def load_projects_ja(base_year, inpath):
         ]
         payee = []
         for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuv':
+            suffix = ''
+            if '事業番号-4' in row and c not in 'WXYZ':
+                if c.isupper():
+                    suffix = '-01'
+                else:
+                    suffix = '-02'
             for n in range(1, 31):
-                if not or_none(row['支出先上位１０者リスト-{}.支払先-{}-支出先'.format(c, n)]):
+                if not or_none(row['支出先上位１０者リスト-{}.支払先-{}-支出先{}'.format(c, n, suffix)]):
                     continue
                 payee.append({
                     '年度': base_year - 1,
                     'グループ': c,
                     '番号': n,
-                    '支出先名': row['支出先上位１０者リスト-{}.支払先-{}-支出先'.format(c, n)],
-                    '法人番号': or_none(row['支出先上位１０者リスト-{}.支払先-{}-法人番号'.format(c, n)]) if '支出先上位１０者リスト-{}.支払先-{}-法人番号'.format(c, n) in row else None,
-                    '業務概要': row['支出先上位１０者リスト-{}.支払先-{}-業務概要'.format(c, n)],
-                    '支出額': float(or_none(row['支出先上位１０者リスト-{}.支払先-{}-支出額（百万円）'.format(c, n)].replace('¥', ''), 0)),
+                    '支出先名': row['支出先上位１０者リスト-{}.支払先-{}-支出先{}'.format(c, n, suffix)],
+                    '法人番号': or_none(row['支出先上位１０者リスト-{}.支払先-{}-法人番号{}'.format(c, n, suffix)]) if '支出先上位１０者リスト-{}.支払先-{}-法人番号{}'.format(c, n, suffix) in row else None,
+                    '業務概要': row['支出先上位１０者リスト-{}.支払先-{}-業務概要{}'.format(c, n, suffix)],
+                    '支出額': float(or_none(row['支出先上位１０者リスト-{}.支払先-{}-支出額（百万円）{}'.format(c, n, suffix)].replace('¥', ''), 0)),
                 })
         obj['支出先'] = payee
 
-        obj['アウトカム'] = [
-            {
-                '成果目標': or_none(list_get(row['成果目標及び成果実績（アウトカム）-定量的な成果目標'], i)),
-                '成果指標': or_none(list_get(row['成果目標及び成果実績（アウトカム）-成果指標'], i)),
-                '単位': or_none(list_get(row['成果目標及び成果実績（アウトカム）-単位-成果実績'], i)),
-                '目標値': or_none(list_get(row['成果目標及び成果実績（アウトカム）-目標最終年度-目標値'], i)),
-                '目標最終年度': convert_era(or_none(list_get(row['成果目標及び成果実績（アウトカム）-目標最終年度-年度'], i)), '令和'),
-                '成果実績': [
-                    {
-                        '年度': base_year - 3,
-                        '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 3)], i)),
-                        '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 3)], i)),
-                    },
-                    {
-                        '年度': base_year - 2,
-                        '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 2)], i)),
-                        '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 2)], i)),
-                    },
-                    {
-                        '年度': base_year - 1,
-                        '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 1)], i)),
-                        '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 1)], i)),
-                    },
-                ],
+        if '成果目標及び成果実績（アウトカム）-定量的な成果目標' in row:
+            obj['アウトカム'] = [
+                {
+                    '成果目標': or_none(list_get(row['成果目標及び成果実績（アウトカム）-定量的な成果目標'], i)),
+                    '成果指標': or_none(list_get(row['成果目標及び成果実績（アウトカム）-成果指標'], i)),
+                    '単位': or_none(list_get(row['成果目標及び成果実績（アウトカム）-単位-成果実績'], i)),
+                    '目標値': or_none(list_get(row['成果目標及び成果実績（アウトカム）-目標最終年度-目標値'], i)),
+                    '目標最終年度': convert_era(or_none(list_get(row['成果目標及び成果実績（アウトカム）-目標最終年度-年度'], i)), '令和'),
+                    '成果実績': [
+                        {
+                            '年度': base_year - 3,
+                            '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 3)], i)),
+                            '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 3)], i)),
+                        },
+                        {
+                            '年度': base_year - 2,
+                            '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 2)], i)),
+                            '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 2)], i)),
+                        },
+                        {
+                            '年度': base_year - 1,
+                            '成果実績': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-成果実績'.format(base_year - 1)], i)),
+                            '目標値': try_float(list_get(row['成果目標及び成果実績（アウトカム）-{}年度-目標値'.format(base_year - 1)], i)),
+                        },
+                    ],
 
-            }
-            for i in range(len(row['成果目標及び成果実績（アウトカム）-定量的な成果目標']))
-            if or_none(row['成果目標及び成果実績（アウトカム）-定量的な成果目標'][i])
-        ]
-        obj['定量的な目標が設定できない理由'] = or_none(
-            row['定量的な成果目標の設定が困難な場合-定量的な目標設定ができない理由及び定性的な成果目標-定量的な目標が設定できない理由'])
+                }
+                for i in range(len(row['成果目標及び成果実績（アウトカム）-定量的な成果目標']))
+                if or_none(row['成果目標及び成果実績（アウトカム）-定量的な成果目標'][i])
+            ]
+        elif '成果目標及び成果実績（アウトカム）-定量的な成果目標-01' in row:
+            obj['アウトカム'] = [
+                {
+                    '成果目標': or_none(row[f'成果目標及び成果実績（アウトカム）-定量的な成果目標-{i:02}']),
+                    '成果指標': or_none(row[f'成果目標及び成果実績（アウトカム）-成果指標-{i:02}']),
+                    '単位': or_none(row[f'成果目標及び成果実績（アウトカム）-単位-成果実績-{i:02}']),
+                    '目標値': or_none(row[f'成果目標及び成果実績（アウトカム）-目標最終年度-目標値-{i:02}']),
+                    '目標最終年度': convert_era(or_none(row[f'成果目標及び成果実績（アウトカム）-目標最終年度-年度-{i:02}']), '令和'),
+                    '成果実績': [
+                        {
+                            '年度': base_year - 3,
+                            '成果実績': try_float(row[f'成果目標及び成果実績（アウトカム）-{base_year - 3}年度-成果実績-{i:02}']),
+                            '目標値': try_float(row[f'成果目標及び成果実績（アウトカム）-{base_year - 3}年度-目標値-{i:02}']),
+                        },
+                        {
+                            '年度': base_year - 2,
+                            '成果実績': try_float(row[f'成果目標及び成果実績（アウトカム）-{base_year - 2}年度-成果実績-{i:02}']),
+                            '目標値': try_float(row[f'成果目標及び成果実績（アウトカム）-{base_year - 2}年度-目標値-{i:02}']),
+                        },
+                        {
+                            '年度': base_year - 1,
+                            '成果実績': try_float(row[f'成果目標及び成果実績（アウトカム）-{base_year - 1}年度-成果実績-{i:02}']),
+                            '目標値': try_float(row[f'成果目標及び成果実績（アウトカム）-{base_year - 1}年度-目標値-{i:02}']),
+                        },
+                    ],
 
-        obj['アウトプット'] = [
-            {
-                '活動指標': row['活動指標及び活動実績（アウトプット）-活動指標'][i],
-                '単位': row['活動指標及び活動実績（アウトプット）-単位-活動実績'][i],
-                '活動実績': [
-                    {
-                        '年度': base_year - 3,
-                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 3)][i]),
-                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 3)][i]),
-                    },
-                    {
-                        '年度': base_year - 2,
-                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 2)][i]),
-                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 2)][i]),
-                    },
-                    {
-                        '年度': base_year - 1,
-                        '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 1)][i]),
-                        '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 1)][i]),
-                    },
-                ],
-            }
-            for i in range(len(row['活動指標及び活動実績（アウトプット）-活動指標']))
-            if or_none(row['活動指標及び活動実績（アウトプット）-活動指標'][i])
-        ]
+                }
+                for i in range(1, 16)
+                if or_none(row[f'成果目標及び成果実績（アウトカム）-定量的な成果目標-{i:02}'])
+            ]
+
+        # obj['定量的な目標が設定できない理由'] = or_none(
+        #     row['定量的な成果目標の設定が困難な場合-定量的な目標設定ができない理由及び定性的な成果目標-定量的な目標が設定できない理由'])
+
+        if '活動指標及び活動実績（アウトプット）-活動指標' in row:
+            obj['アウトプット'] = [
+                {
+                    '活動指標': row['活動指標及び活動実績（アウトプット）-活動指標'][i],
+                    '単位': row['活動指標及び活動実績（アウトプット）-単位-活動実績'][i],
+                    '活動実績': [
+                        {
+                            '年度': base_year - 3,
+                            '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 3)][i]),
+                            '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 3)][i]),
+                        },
+                        {
+                            '年度': base_year - 2,
+                            '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 2)][i]),
+                            '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 2)][i]),
+                        },
+                        {
+                            '年度': base_year - 1,
+                            '活動実績': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-活動実績'.format(base_year - 1)][i]),
+                            '当初見込み': try_float(row['活動指標及び活動実績（アウトプット）-{}年度-当初見込み'.format(base_year - 1)][i]),
+                        },
+                    ],
+                }
+                for i in range(len(row['活動指標及び活動実績（アウトプット）-活動指標']))
+                if or_none(row['活動指標及び活動実績（アウトプット）-活動指標'][i])
+            ]
+        elif '活動指標及び活動実績（アウトプット）-活動指標' in row:
+            obj['アウトプット'] = [
+                {
+                    '成果目標': or_none(row[f'活動指標及び活動実績（アウトプット）-活動指標-{i:02}']),
+                    '単位': or_none(row[f'活動指標及び活動実績（アウトプット）-単位-活動実績-{i:02}']),
+                    '活動実績': [
+                        {
+                            '年度': base_year - 3,
+                            '活動実績': try_float(row[f'活動指標及び活動実績（アウトプット）-{base_year - 3}年度-活動実績-{i:02}']),
+                            '当初見込み': try_float(row[f'活動指標及び活動実績（アウトプット）-{base_year - 3}年度-当初見込み-{i:02}']),
+                        },
+                        {
+                            '年度': base_year - 2,
+                            '活動実績': try_float(row[f'活動指標及び活動実績（アウトプット）-{base_year - 2}年度-活動実績-{i:02}']),
+                            '当初見込み': try_float(row[f'活動指標及び活動実績（アウトプット）-{base_year - 2}年度-当初見込み-{i:02}']),
+                        },
+                        {
+                            '年度': base_year - 1,
+                            '活動実績': try_float(row[f'活動指標及び活動実績（アウトプット）-{base_year - 1}年度-活動実績-{i:02}']),
+                            '当初見込み': try_float(row[f'活動指標及び活動実績（アウトプット）-{base_year - 1}年度-当初見込み-{i:02}']),
+                        },
+                    ],
+
+                }
+                for i in range(1, 6)
+                if or_none(row[f'活動指標及び活動実績（アウトプット）-活動指標-{i:02}'])
+            ]
 
         past_project_numbers = []
         if '関連する過去のレビューシートの事業番号-{}年度-所管府省名'.format(base_year - 1) in row:
@@ -346,8 +428,10 @@ def load_projects_ja(base_year, inpath):
 
 def load_projects_from_files(paths):
     for path in paths:
-        for row in open(path):
-            yield json.loads(row.strip())
+        year = int(os.path.basename(path)[8:12])
+        print(year)
+        for obj in load_projects_ja(year, path):
+            yield obj
 
 
 def copy_rec(src, dst, overwrite):

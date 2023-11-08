@@ -3,7 +3,9 @@ import os
 
 
 def project_number(item):
-    return '-'.join([v for v in [item['事業番号{}'.format(i)] for i in range(1, 4)] if v])
+    if '事業番号' in item:
+        return item['事業番号']
+    return '-'.join([v for v in [item[f'事業番号{i}'] for i in range(1, 6) if f'事業番号{i}' in item] if v])
 
 
 def project_dest_path(item):

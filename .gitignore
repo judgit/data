@@ -3,3 +3,5 @@ dest
 .scrapy
 .venv
 .vscode
+csv
+tmp
