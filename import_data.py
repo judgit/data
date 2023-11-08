@@ -202,6 +202,8 @@ def load_projects_ja(base_year, inpath):
             obj['主要施策'] = or_none(row['主要政策・施策'], 'その他').split('、')
         elif '主要施策' in row:
             obj['主要施策'] = or_none(row['主要施策'], 'その他').split('、')
+        else:
+            obj['主要施策'] = None
         obj['予算'] = [
             {
                 '年度': base_year - 3,
@@ -329,6 +331,9 @@ def load_projects_ja(base_year, inpath):
                 for i in range(1, 16)
                 if or_none(row[f'成果目標及び成果実績（アウトカム）-定量的な成果目標-{i:02}'])
             ]
+        else:
+            obj['アウトカム'] = []
+
 
         # obj['定量的な目標が設定できない理由'] = or_none(
         #     row['定量的な成果目標の設定が困難な場合-定量的な目標設定ができない理由及び定性的な成果目標-定量的な目標が設定できない理由'])
@@ -386,6 +391,8 @@ def load_projects_ja(base_year, inpath):
                 for i in range(1, 6)
                 if or_none(row[f'活動指標及び活動実績（アウトプット）-活動指標-{i:02}'])
             ]
+        else:
+            obj['アウトプット'] = []
 
         past_project_numbers = []
         if '関連する過去のレビューシートの事業番号-{}年度-所管府省名'.format(base_year - 1) in row:
